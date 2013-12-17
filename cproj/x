@@ -1,0 +1,40 @@
+10, 15, 22, 13, 6, 5, 9, 42, 32, 2, 
+begin#lo0=0 hi0=9
+loop lo=0 hi=9
+loop lo=1 hi=8
+--a[7]=42 mid=6
+--a[6]=9 mid=6
+--a[5]=5 mid=6
+loop lo=2 hi=4
+loop lo=3 hi=3
+--a[2]=6 mid=6
+begin#lo0=0 hi0=2
+loop lo=0 hi=2
+--a[1]=5 mid=5
+--a[1]=5 mid=5
+begin#lo0=3 hi0=9
+loop lo=3 hi=9
+--a[8]=32 mid=9
+--a[7]=42 mid=9
+--a[6]=9 mid=9
+loop lo=4 hi=5
+--a[4]=22 mid=9
+--a[3]=9 mid=9
+begin#lo0=4 hi0=9
+loop lo=4 hi=9
+loop lo=5 hi=8
+--a[7]=42 mid=13
+--a[6]=13 mid=13
+begin#lo0=4 hi0=5
+loop lo=4 hi=5
+--a[4]=10 mid=10
+begin#lo0=6 hi0=9
+loop lo=6 hi=9
+--a[7]=42 mid=42
+loop lo=8 hi=8
+--a[9]=42 mid=42
+begin#lo0=6 hi0=8
+loop lo=6 hi=8
+--a[7]=22 mid=22
+--a[7]=22 mid=22
+2, 5, 6, 9, 10, 13, 15, 22, 32, 42, 

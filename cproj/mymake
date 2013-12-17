@@ -1,0 +1,75 @@
+clear
+echo "--------------------------------------------------------------"
+date "+Date : %d-%h-%y"
+echo "--------------------------------------------------------------"
+if test $# -eq 1 
+then
+	if (test $1 = "-D" || test $1 = "-d")
+	then
+		gmake clean 1>object/tmp.xxx 2>object/tmp.xxx
+		echo "msg : Deleted all executable & obj files ..."
+		rm object/tmp.xxx
+		exit
+	elif (test $1 = "-A" || test $1 = "-a")
+	then
+		./mymake -d
+		echo "msg : Compiling mainApp.cc ..."
+		gmake main 1>object/tmp.xxx
+		echo "msg : Compiling first.cc ..."
+		gmake first 1>object/tmp.xxx
+		echo "msg : Compiling error.cc ..."
+		gmake error 1>object/tmp.xxx
+		echo "msg : Compiling template.cc ..."
+		gmake temp 1>object/tmp.xxx
+		echo "msg : Completed compiling all files & now linking ..."
+		gmake proj 1>object/tmp.xxx
+		rm object/tmp.xxx
+	elif (test $1 = "-M" || test $1 = "-m")
+	then
+		echo "msg : Compiling mainApp.cc ..."
+		gmake main 1>object/tmp.xxx
+		echo "msg : Completed compiling mainApp.cc & now linking ..."
+		gmake proj 1>object/tmp.xxx
+		rm object/tmp.xxx
+	elif (test $1 = "-E" || test $1 = "-e")
+	then
+		echo "msg : Compiling error.cc ..."
+		gmake error 1>object/tmp.xxx
+		echo "msg : Completed compiling error.cc & now linking ..."
+		gmake proj 1>object/tmp.xxx
+		rm object/tmp.xxx
+	elif (test $1 = "-F" || test $1 = "-f")
+	then
+		echo "msg : Compiling first.cc ..."
+		gmake first 1>object/tmp.xxx
+		echo "msg : Completed compiling first.cc & linking ..."
+		gmake proj 1>object/tmp.xxx
+		rm object/tmp.xxx
+	elif (test $1 = "-T" || test $1 = "-t")
+	then
+		echo "msg : Compiling template.cc ..."
+		gmake temp 1>object/tmp.xxx
+		echo "msg : Completed compiling template.cc & linking ..."
+		gmake proj 1>object/tmp.xxx
+		rm object/tmp.xxx
+	else
+		echo "info : Use option [-d/D] to delete all executables ..."
+		echo "                  [-m/M] to recompile mainApp.cc ..."
+		echo "                  [-f/F] to recompile first.cc ..."
+		echo "                  [-e/E] to recompile error.cc ..."
+		echo "                  [-t/T] to recompile template.cc ..."
+		echo "                  [-a/A] to recompile all files ..."
+		exit
+	fi
+fi
+if(test -x object/proj)
+then
+	echo "msg : Running the program ..."
+	echo ".......................... Results ..........................."
+	cd object/
+	./proj "How are you ?" 
+else
+#	claer
+#	./mymake -a
+	exit
+fi
